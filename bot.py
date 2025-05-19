@@ -87,4 +87,10 @@ async def ask_rename(client, callback_query):
         else:
             await msg.reply_text("File info not found.")
 
+from threading import Thread
+from web import run
+
+# Start dummy web server in background
+Thread(target=run).start()
+
 # === Rename Feature End ===
