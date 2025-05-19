@@ -5,8 +5,12 @@
 import os
 from plugins.config import Config
 from pyrogram import Client
+from config import Config  # अगर पहले से नहीं है तो
 
-if __name__ == "__main__" :
+app = Client("my_bot", api_id=Config.API_ID, api_hash=Config.API_HASH, bot_token=Config.BOT_TOKEN)
+
+if __name__ == "__main__":
+    app.run()
 
     if not os.path.isdir(Config.DOWNLOAD_LOCATION):
         os.makedirs(Config.DOWNLOAD_LOCATION)
