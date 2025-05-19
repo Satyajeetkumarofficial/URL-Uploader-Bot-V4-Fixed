@@ -5,6 +5,19 @@
 import os
 from plugins.config import Config
 from pyrogram import Client
+from threading import Thread
+from flask import Flask
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot is alive", 200
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+Thread(target=run).start()
 
 app = Client("my_bot", api_id=Config.API_ID, api_hash=Config.API_HASH, bot_token=Config.BOT_TOKEN)
 
@@ -86,11 +99,5 @@ async def ask_rename(client, callback_query):
             # Upload logic here
         else:
             await msg.reply_text("File info not found.")
-
-from threading import Thread
-from web import run
-
-# Start dummy web server in background
-Thread(target=run).start()
 
 # === Rename Feature End ===
