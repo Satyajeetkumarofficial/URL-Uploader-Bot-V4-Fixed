@@ -2,13 +2,12 @@
 
 # [⚠️ Do not change this repo link ⚠️] :- https://github.com/LISA-KOREA/UPLOADER-BOT-V4
 
-
 import os
 from plugins.config import Config
 from pyrogram import Client
 
 if __name__ == "__main__" :
-    
+
     if not os.path.isdir(Config.DOWNLOAD_LOCATION):
         os.makedirs(Config.DOWNLOAD_LOCATION)
     plugins = dict(root="plugins")
@@ -52,11 +51,8 @@ async def handle_url_message(client, message: Message):
     reply_markup = InlineKeyboardMarkup(buttons)
 
     await message.reply_text(
-        f"📥 **How would you like to upload this link?**
-
-"
-        f"**Name:** {file_name}
-**Size:** {file_size}",
+        f"📥 **How would you like to upload this link?**\n\n"
+        f"**Name:** `{file_name}`\n**Size:** `{file_size}`",
         reply_markup=reply_markup
     )
 
