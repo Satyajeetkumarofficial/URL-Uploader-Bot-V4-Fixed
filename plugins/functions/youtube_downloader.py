@@ -1,5 +1,5 @@
 import yt_dlp
-from config import Config
+from plugins.config import Config
 
 async def download_youtube_video(url):
     try:
