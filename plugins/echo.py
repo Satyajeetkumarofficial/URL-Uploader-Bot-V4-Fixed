@@ -29,8 +29,8 @@ from plugins.functions.ran_text import random_char
 from plugins.database.database import db
 from plugins.database.add import AddUser
 from pyrogram.types import Thumbnail
+cookies_file = 'cookies.txt'
 
-cookies = "cookies.txt"
 
 
 @Client.on_message(filters.private & filters.regex(pattern=".*http.*"))
@@ -121,23 +121,23 @@ async def echo(bot, update):
             "yt-dlp",
             "--no-warnings",
             "--allow-dynamic-mpd",
+            "--cookies", cookies_file,
             "--no-check-certificate",
             "-j",
             url,
-            "--proxy", Config.HTTP_PROXY,
-          "--cookies", cookies
+            "--proxy", Config.HTTP_PROXY
         ]
     else:
         command_to_exec = [
             "yt-dlp",
             "--no-warnings",
             "--allow-dynamic-mpd",
+            "--cookies", cookies_file,
             "--no-check-certificate",
             "-j",
             url,
             "--geo-bypass-country",
-            "IN",
-          "--cookies", cookies
+            "IN"
 
         ]
     if youtube_dl_username is not None:
